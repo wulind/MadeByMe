@@ -14,6 +14,33 @@ const Home = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
+                    justifyContent: 'center', 
+                    width: '100vw', // 100% of the viewport width
+                    height: '100vh', // 100% of the viewport height
+                }}
+            >
+                <img src="/images/flower1.png"/>
+            </Box>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center', 
+                    width: '100vw',
+                    height: '100vh',
+                }}
+            >
+                <img src="/images/flower2.png"/>
+            </Box>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center', 
+                    width: '100vw',
+                    height: '100vh',
                 }}
             >
                 <img src="/images/flower3.png"/>
