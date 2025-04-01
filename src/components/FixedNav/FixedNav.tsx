@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import React, {useEffect, useRef, useState} from 'react';
 import { useLenis } from '../../ContextProviders/LenisProvider';
 import FixedNavItem from './FixedNavItem';
+import "./FixedNav.css";
 
 interface FixedNavProps {
     id: string;
@@ -40,15 +41,11 @@ const FixedNav = (props: FixedNavProps) => {
     return (
         <section
             id={props.id || undefined}
-            className={classNames('left-0 z-[99] hidden w-full mix-blend-difference md:fixed md:block', {
-                '-bottom-30 opacity-0 transition-all duration-1000': lastSection === true,
-                'bottom-13  opacity-100 transition-all duration-1000': lastSection === false,
-            })}
         >
             <>
-                <div className={'col-span-full flex justify-center'}>
-                    <div className='flex justify-center'>
-                        <div className='rounded-xxs relative flex w-full gap-4 '>
+                <div>
+                    <div>
+                        <div>
                         {filteredItems.length > 0 &&
                             filteredItems.map((props: any, i: number) => {
                                 if (props.component !== 'fixed-nav-item') {

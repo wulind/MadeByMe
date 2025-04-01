@@ -27,7 +27,7 @@ const Header = () => {
                   storeSelectionPannels={() => {}}
                 />
                 <FixNavItem
-                  id={'home'}
+                  id={'patterns'}
                   label={'Patterns'}
                   activeIndex={0}
                   isCurrent={true}
@@ -35,7 +35,7 @@ const Header = () => {
                   storeSelectionPannels={() => {}}
                 />
                 <FixNavItem
-                  id={'home'}
+                  id={'aboutus'}
                   label={'About us'}
                   activeIndex={0}
                   isCurrent={true}

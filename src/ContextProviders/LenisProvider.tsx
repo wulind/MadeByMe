@@ -3,18 +3,14 @@ import Lenis from 'lenis';
 
 // Define the type for the Lenis context
 interface LenisContextType {
-  lenis: Lenis | null;
+  lenis: Lenis;
 }
 
 // Create a context to store the Lenis instance
-const LenisContext = createContext<LenisContextType | undefined>(undefined);
+const LenisContext = createContext<LenisContextType>({lenis: new Lenis()});
 
 export const useLenis = (): LenisContextType => {
-  const context = useContext(LenisContext);
-  if (!context) {
-    throw new Error('useLenis must be used within a LenisProvider');
-  }
-  return context;
+  return useContext(LenisContext);
 };
 
 interface LenisProviderProps {

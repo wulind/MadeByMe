@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import * as React from 'react';
 import { useLenis } from '../../ContextProviders/LenisProvider';
-import './FixedNavItem.css'; 
+import './FixedNav.css'; 
 
 interface FixedNavItemProps {
     id: string;
@@ -13,13 +12,15 @@ interface FixedNavItemProps {
 }
 
 const FixedNavItem = (props: FixedNavItemProps) => {
-    const { lenis } = useLenis();
+  const { lenis } = useLenis();
+  
+  const handleScrollto = (id: string) => {
     
-    const handleScrollto = (id: string) => {
-        if (lenis){
-            lenis.scrollTo(`#${id}`, {duration: 1.5});
-        }
-    }
+    debugger;
+      if (lenis){
+        lenis.scrollTo(`#${id}`, {duration: 1.5});
+      }
+  }
 
   return (
     <button
@@ -28,7 +29,8 @@ const FixedNavItem = (props: FixedNavItemProps) => {
         'bg-white': props.index < props.activeIndex,
       })}
       onClick={() => {
-        handleScrollto(props.id)
+        debugger;
+        handleScrollto(props.id);
       }}
     >
         <p className='text-size-small padding-0 margin-0 text-white mix-blend-difference'>
