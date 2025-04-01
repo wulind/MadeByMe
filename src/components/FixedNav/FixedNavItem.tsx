@@ -1,27 +1,17 @@
 import classNames from 'classnames';
-import { useLenis } from '../../ContextProviders/LenisProvider';
 import './FixedNav.css'; 
 
 interface FixedNavItemProps {
     id: string;
     label: string;
     activeIndex: number;
+    handleScrollto: (id: string) => void;
     isCurrent: boolean;
     index: number;
     storeSelectionPannels: (element: HTMLElement | null, index: number) => void;
 }
 
 const FixedNavItem = (props: FixedNavItemProps) => {
-  const { lenis } = useLenis();
-  
-  const handleScrollto = (id: string) => {
-    
-    debugger;
-      if (lenis){
-        lenis.scrollTo(`#${id}`, {duration: 1.5});
-      }
-  }
-
   return (
     <button
       className={classNames('containerNav relative rounded uppercase bg-black', {
@@ -29,8 +19,7 @@ const FixedNavItem = (props: FixedNavItemProps) => {
         'bg-white': props.index < props.activeIndex,
       })}
       onClick={() => {
-        debugger;
-        handleScrollto(props.id);
+        props.handleScrollto(props.id);
       }}
     >
         <p className='text-size-small padding-0 margin-0 text-white mix-blend-difference'>

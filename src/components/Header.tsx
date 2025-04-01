@@ -1,9 +1,21 @@
-import * as React from "react";
-import FixNavItem from './FixedNav/FixedNavItem';
-import ButtonGroup from '@mui/material/ButtonGroup';
+import FixedNav from './FixedNav/FixedNav';
 import Box from '@mui/material/Box';
 
 const Header = () => { 
+
+    const fixedNavItems = [
+      {
+        id: "home",
+        label: "Home",
+      },
+      {
+        id: "patterns",
+        label: "Patterns",
+      },
+      {
+        id: "aboutus",
+        label: "About us",
+      },]
 
     return (
         <Box
@@ -17,32 +29,10 @@ const Header = () => {
           }}
         >
             <h1>MADE BY STUDIOS</h1>
-            <ButtonGroup variant="text" aria-label="Basic button group">
-                <FixNavItem
-                  id={'home'}
-                  label={'Home'}
-                  activeIndex={0}
-                  isCurrent={true}
-                  index={0}
-                  storeSelectionPannels={() => {}}
-                />
-                <FixNavItem
-                  id={'patterns'}
-                  label={'Patterns'}
-                  activeIndex={0}
-                  isCurrent={true}
-                  index={0}
-                  storeSelectionPannels={() => {}}
-                />
-                <FixNavItem
-                  id={'aboutus'}
-                  label={'About us'}
-                  activeIndex={0}
-                  isCurrent={true}
-                  index={0}
-                  storeSelectionPannels={() => {}}
-                />
-            </ButtonGroup>
+            <FixedNav
+              id={'fixed-nav'} 
+              items={fixedNavItems}
+            />
         </Box>
       );
     };
