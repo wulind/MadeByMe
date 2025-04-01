@@ -5,6 +5,7 @@ h1 {
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
+    font-size: 5em;
 }
 
 p {
@@ -12,60 +13,5 @@ p {
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
-}
-
-/* Container for the navigation button */
-.containerNav {
-    position: relative;
-    border-radius: 100px;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-    background-color: #000000;
-  }
-  
-.containerNav:hover {
-    background-color: #ffffff; /* hover:bg-grey-600 */
-}
-
-/* Inner block container */
-.relative {
-    position: relative;
-}
-
-.block {
-    display: block;
-}
-
-.h-full {
-    height: 100%;
-}
-
-.overflow-hidden {
-    overflow: hidden;
-}
-
-.p-3 {
-    padding: 12px; /* 3 * 4px */
-}
-
-/* Border and background for the inner div */
-.mix-blend-difference {
-    mix-blend-mode: difference;
-}
-
-.border-white {
-    border-color: white;
-}
-
-.bg-white {
-    background-color: white;
-}
-
-.border-transparent {
-    border-color: transparent;
-}
-
-/* Text styles */
-.text-white {
-    color: white;
+    font-size: 5em;
 }

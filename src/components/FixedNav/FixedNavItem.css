@@ -1,0 +1,53 @@
+/* Container for the navigation button */
+.containerNav {
+  position: relative;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  border-color: transparent;
+  margin: 5px;
+  padding: 10px 20px; /* Adjust padding for better spacing */
+}
+
+.containerNav:hover {
+  background-color: #ffffff;
+  border-color: black;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+/* Inner block container */
+.relative {
+  position: relative;
+}
+
+.rounded {
+  border-radius: 100px;
+}
+
+/* Background for the text inner div */
+.mix-blend-difference {
+  mix-blend-mode: difference; /* Ensures that text is opposite color of background */
+}
+
+/* Text styles */
+.text-size-small {
+  font-size: 0.8rem; /* Example size for small text */
+}
+
+.text-white {
+  color: white;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.margin-0 {
+  margin: 0;
+}

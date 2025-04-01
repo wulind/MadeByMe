@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import { useLenis } from '../../ContextProviders/LenisProvider';
+import './FixedNavItem.css'; 
 
 interface FixedNavItemProps {
     id: string;
@@ -22,7 +23,7 @@ const FixedNavItem = (props: FixedNavItemProps) => {
 
   return (
     <button
-      className={classNames('containerNav group relative rounded-[100px]  uppercase', {
+      className={classNames('containerNav relative rounded uppercase bg-black', {
         'hover:bg-grey-600': !props.isCurrent,
         'bg-white': props.index < props.activeIndex,
       })}
@@ -30,7 +31,7 @@ const FixedNavItem = (props: FixedNavItemProps) => {
         handleScrollto(props.id)
       }}
     >
-        <p className='misc-tabs-s text-grey-400 relative text-white mix-blend-difference'>
+        <p className='text-size-small padding-0 margin-0 text-white mix-blend-difference'>
           {props.label}
         </p>
     </button>
