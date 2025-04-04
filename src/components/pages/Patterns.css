@@ -1,9 +1,9 @@
-
 .row {
     display: flex;
     flex-wrap: wrap;
     padding: 0 4px;
     justify-content: center;
+    grid-area: 'patterns';
 }
 
 /* Create 3 equal columns that sits next to each other */
