@@ -9,13 +9,13 @@ interface FixedNavProps {
 }
 
 const FixedNav = (props: FixedNavProps) => {
-    const [filteredItems, setFilteredItems] = useState<any[]>([]);
+    const [items, setItems] = useState<any[]>([]);
     const [currentSection, setCurrentSection] = useState(null);
     const lenis = useLenis();
     
     const handleScrollto = (id: string) => {
         if (lenis){
-            lenis.scrollTo(`home`, {duration: 1.5});
+            lenis.scrollTo(`#${id}`, {duration: 1.2});
         }
     };
 
@@ -27,10 +27,10 @@ const FixedNav = (props: FixedNavProps) => {
             return false;
         });
         
-        setFilteredItems(filtered_items);
+        setItems(filtered_items);
 
         return () => {
-            setFilteredItems([]);
+            setItems([]);
         };
     }, [props.items]);
 
@@ -38,8 +38,8 @@ const FixedNav = (props: FixedNavProps) => {
         <section
             id={props.id || undefined}
         >
-            {filteredItems.length > 0 &&
-                filteredItems.map((props: any, i: number) => {
+            {items.length > 0 &&
+                items.map((props: any, i: number) => {
                     return (
                         <FixedNavItem
                             key={props._uid}
@@ -47,7 +47,6 @@ const FixedNav = (props: FixedNavProps) => {
                             handleScrollto={handleScrollto}
                             index={i}
                             isCurrent={currentSection === i}
-                            storeSelectionPannels={() => {}}
                             activeIndex={currentSection}
                         />
                     );

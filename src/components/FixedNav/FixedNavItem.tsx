@@ -8,7 +8,6 @@ interface FixedNavItemProps {
     handleScrollto: (id: string) => void;
     isCurrent: boolean;
     index: number;
-    storeSelectionPannels: (element: HTMLElement | null, index: number) => void;
 }
 
 const FixedNavItem = (props: FixedNavItemProps) => {
