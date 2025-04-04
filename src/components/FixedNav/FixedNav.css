@@ -1,3 +1,7 @@
+.logo {
+  width: 100vw;
+}
+
 .header {
   background-color: white;
   width: 100%;
@@ -6,8 +10,8 @@
   z-index: 10; /* Ensures the header is above other content */
   display: flex;
   justify-content: center;
-  transition: all 1s ease;
   grid-area: header;
+  transition: height 1s ease;
 }
 
 .sticky {
@@ -15,10 +19,15 @@
   height: 15vh;
 }
 
-h1 {
-  --scale: 1;
-  transform: scale(var(--scale));
-  top: 50%;
+/* Header scroll animations */
+h1.font-size-3em {
+  font-size: 3em;
+  transition: font-size 1s ease;
+}
+
+h1.font-size-5em {
+  font-size: 5em;
+  transition: font-size 1s ease;
 }
 
 /* Container for the navigation button */
@@ -72,4 +81,18 @@ h1 {
 
 .margin-0 {
   margin: 0;
+}
+
+/* See more section */
+.see-more, .material-icons {
+  color: gray;
+  position: absolute;
+}
+
+.see-more {
+  bottom: 35px;
+}
+
+.material-icons {
+  bottom: 10px;
 }

@@ -20,14 +20,7 @@ const FixedNav = (props: FixedNavProps) => {
     };
 
     useEffect(() => {
-        const filtered_items = props.items.filter((item) => {
-            if (document.getElementById(item.id) !== null) {
-                return true;
-            }
-            return false;
-        });
-        
-        setItems(filtered_items);
+        setItems(props.items);
 
         return () => {
             setItems([]);

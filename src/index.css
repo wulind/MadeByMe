@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-    --header-font-size: 5;
+    --default-h1-font-size: 5;
     font-family: "Inter", sans-serif;
 }
 
@@ -9,7 +9,7 @@ h1 {
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
-    font-size: calc(var(--header-font-size) * 1em);
+    font-size: calc(var(--default-h1-font-size) * 1em);
     text-align: center;
 }
 
@@ -18,4 +18,29 @@ p {
     font-weight: normal;
     font-style: normal;
     font-size: 5em;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1em;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
 }
