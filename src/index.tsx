@@ -14,7 +14,6 @@ if (container) {
         options={{ 
           autoRaf: true,
           duration: .7,
-          easing: (t) => t,
         }}
         root>
         <App />
