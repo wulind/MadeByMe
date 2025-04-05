@@ -1,21 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import { ReactLenis } from 'lenis/react';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { ReactLenis } from "lenis/react";
 // import reportWebVitals from './reportWebVitals';
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 if (container) {
   const root = ReactDOM.createRoot(container);
   root.render(
     <React.StrictMode>
       <ReactLenis
-        options={{ 
+        options={{
           autoRaf: true,
-          duration: .7,
+          duration: 0.7,
         }}
-        root>
+        root
+      >
         <App />
       </ReactLenis>
     </React.StrictMode>
