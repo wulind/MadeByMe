@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { useLenis } from "lenis/react";
 import { useState } from "react";
 import classNames from "classnames";
+import strings from "../../assets/strings/strings";
 
 interface HeaderProps {
   isSticky?: boolean;
@@ -37,17 +38,17 @@ const Header = (props: HeaderProps) => {
     {
       key: "home",
       id: "home",
-      label: "Home",
+      label: strings.HOME,
     },
     {
       key: "patterns",
       id: "patterns",
-      label: "Patterns",
+      label: strings.PATTERNS,
     },
     {
       key: "aboutus",
       id: "aboutus",
-      label: "About us",
+      label: strings.ABOUT_US,
     },
   ];
 
@@ -68,16 +69,16 @@ const Header = (props: HeaderProps) => {
       >
         <h1
           className={classNames(
-            "logo",
+            "logo uppercase",
             isSticky ? "font-size-3em" : "font-size-5em"
           )}
         >
-          MADE BY STUDIOS
+          {strings.MADE_BY_STUDIOS}
         </h1>
         <FixedNav id={"fixed-nav"} items={fixedNavItems} />
         {!isSticky && (
           <>
-            <div className="see-more">scroll to see more</div>
+            <div className="see-more lowercase">{strings.SEE_MORE}</div>
             <i className="material-icons">expand_more</i>
           </>
         )}

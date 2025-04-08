@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLenis } from "lenis/react";
 import FixedNavItem from "./FixedNavItem";
 import "./FixedNav.css";
@@ -9,6 +10,7 @@ interface FixedNavProps {
 }
 
 const FixedNav = (props: FixedNavProps) => {
+  const navigate = useNavigate();
   const [items, setItems] = useState<any[]>([]);
   const [currentSection, setCurrentSection] = useState(null);
   const lenis = useLenis();
@@ -17,6 +19,10 @@ const FixedNav = (props: FixedNavProps) => {
     if (lenis) {
       lenis.scrollTo(`#${id}`, { duration: 1.2 });
     }
+  };
+
+  const handleAppendToUrl = (valueToAppend: string) => {
+    navigate(`/${valueToAppend}`);
   };
 
   useEffect(() => {
@@ -35,7 +41,7 @@ const FixedNav = (props: FixedNavProps) => {
             <FixedNavItem
               key={props._uid}
               {...props}
-              handleScrollto={handleScrollto}
+              handleScrollto={handleAppendToUrl}
               index={i}
               isCurrent={currentSection === i}
               activeIndex={currentSection}

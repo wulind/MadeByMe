@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import "./PurchasePage.css";
 import { CrochetPattern } from "../../types/Product";
 import { useEffect, useState } from "react";
+import strings from "../../assets/strings/strings";
 
 // Used for testing purposes only
 import { testingData } from "../../data/patterns";
@@ -40,7 +41,6 @@ const PurchasePage = (props: PurchasePageProps) => {
             height: "5em",
             width: "25em",
             "& > *": {
-              // CSS selector that targets all direct child elements of Box component
               borderRadius: "50%",
             },
           }}
@@ -60,26 +60,26 @@ const PurchasePage = (props: PurchasePageProps) => {
         <h2 className="productTitle">{productDetails?.title}</h2>
         <h3 className="price">{`$${productDetails?.price}`}</h3>
         <h3 className="description">{productDetails?.description}</h3>
-        <button>Add to cart</button>
+        <button>{strings.ADD_TO_CART}</button>
         <table>
           <tr>
-            <td className="productProperty">Craft</td>
+            <td className="productProperty">{strings.CRAFT}</td>
             <td className="value">{productDetails?.craft}</td>
           </tr>
           <tr>
-            <td className="productProperty">Hook size</td>
+            <td className="productProperty">{strings.HOOK_SIZE}</td>
             <td className="value">{productDetails?.hookSize}</td>
           </tr>
           <tr>
-            <td className="productProperty">Gauge</td>
+            <td className="productProperty">{strings.GAUGE}</td>
             <td className="value">{productDetails?.gauge}</td>
           </tr>
           <tr>
-            <td className="productProperty">Category</td>
+            <td className="productProperty">{strings.CATEGORY}</td>
             <td className="value">{productDetails?.category}</td>
           </tr>
           <tr>
-            <td className="productProperty">Language</td>
+            <td className="productProperty">{strings.LANGUAGE}</td>
             <td className="value">{productDetails?.language}</td>
           </tr>
         </table>

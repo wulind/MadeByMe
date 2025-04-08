@@ -14,7 +14,7 @@ const FixedNavItem = (props: FixedNavItemProps) => {
   return (
     <button
       className={classNames(
-        "containerNav relative rounded uppercase bg-black",
+        "containerNav relative rounded bg-black",
         {
           "hover:bg-grey-600": !props.isCurrent,
           "bg-white": props.index < props.activeIndex,

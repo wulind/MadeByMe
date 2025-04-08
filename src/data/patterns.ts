@@ -28,4 +28,16 @@ export const testingData = [
     language: "English",
     difficultyLevel: "Beginner",
   },
+  
+  {
+    id: "0f072328-8408-4730-b3ac-245a2b83eb82",
+    title: "Crisscross dress",
+    description: "Advanced crochet pattern for experts.",
+    price: 10.99,
+    imageUrl: "/images/horizontaleditorial.webp",
+    tags: ["dress", "crisscross", "crochet"],
+    craft: "Crochet",
+    language: "English",
+    difficultyLevel: "Medium",
+  },
 ];

@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Header from "../FixedNav/Header";
 import Footer from "../Footer";
-import Patterns from "./Patterns";
+import Patterns from "./Pattern";
 import "./Home.css";
 
 const Home = () => {

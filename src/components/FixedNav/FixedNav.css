@@ -19,6 +19,13 @@
   height: 15vh;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
 /* Header scroll animations */
 h1.font-size-3em {
   font-size: 3em;
