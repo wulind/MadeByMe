@@ -1,6 +1,6 @@
 import Header from "../FixedNav/Header";
 import Box from "@mui/material/Box";
-import "./PurchasePage.css";
+import "./ProductPage.css";
 import { CrochetPattern } from "../../types/Product";
 import { useEffect, useState } from "react";
 import strings from "../../assets/strings/strings";
@@ -8,11 +8,11 @@ import strings from "../../assets/strings/strings";
 // Used for testing purposes only
 import { testingData } from "../../data/patterns";
 
-interface PurchasePageProps {
+interface ProductPageProps {
   productId: string; // TODO: product not found page
 }
 
-const PurchasePage = (props: PurchasePageProps) => {
+const ProductPage = (props: ProductPageProps) => {
   const [productDetails, setProductDetails] = useState<CrochetPattern>();
 
   useEffect(() => {
@@ -88,4 +88,4 @@ const PurchasePage = (props: PurchasePageProps) => {
   );
 };
 
-export default PurchasePage;
+export default ProductPage;
