@@ -1,4 +1,4 @@
-import Home from "../../components/pages/Home";
+import Home from "../../components/pages/HomePage/Home";
 
 const strings = {
     ADD_TO_CART : 'Add to cart',
