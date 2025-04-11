@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import Header from "../../navigation/Header";
+import RainRevealPage from "../../navigation/RainRevealPage";
 import Footer from "../../Footer";
 import Patterns from "./Pattern";
 import "./Home.css";
@@ -7,7 +7,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <div id="aboutus">
-      <Header />
+      <RainRevealPage />
       <Box
         id="home"
         sx={{
@@ -22,10 +22,16 @@ const Home = () => {
             Designed by <i>us</i>
           </h1>
           <p className="about-us">
+            We started with an idea between some friends, tired of limiting our
+            creative abilities. We didn't know what we wanted to build, but we
+            knew wanted a personal playground, where we can create anything
+            without restriction. MADE BY STUDIOS is the product of this desire.
+            As much as it is ours, we want this to be your creative outlet as
+            well. We hope you explore a new medium, experiment with our
+            patterns, and most importantly break free from creative limitations.
             Each of our crochet patterns is lovingly designed by us, but the
             real magic happens when you bring them to life with your own hands.
-            Whether you're crafting for yourself or making a gift for someone
-            special, your unique touch turns our designs into something truly
+            Your unique touch turns our designs into something truly
             one-of-a-kind. We'd be thrilled to see what you create—share your
             finished pieces with us and join our growing community of makers who
             inspire us every day!
