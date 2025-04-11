@@ -10,27 +10,38 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 app = FastAPI()
 
-# Replace this with your real Stripe secret key
-stripe.api_key = os.getenv("STRIPE_SECRET_KEY", api_key)
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000"],  # Allow frontend dev server to talk to backend
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-@app.post("/create-payment-intent")
-async def create_payment_intent(request: Request):
-    data = await request.json()
-    amount = data.get("amount", 1000)  # $10.00 as default
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY", api_key)
 
+YOUR_DOMAIN = 'http://localhost:4242'
+@app.post('/create-checkout-session')
+def create_checkout_session(request: Request):
     try:
-        intent = stripe.PaymentIntent.create(
-            amount=amount,
-            currency="usd",
-            automatic_payment_methods={"enabled": True}
+        session = stripe.checkout.Session.create(
+            ui_mode = 'embedded',
+            line_items=[{"price": "price_1RCp23GdkU36Z3bIaCQnH2od", "quantity": 2}],
+            mode='payment',
+            return_url=YOUR_DOMAIN + '/return?session_id={CHECKOUT_SESSION_ID}',
         )
-        return {"clientSecret": intent["client_secret"]}
     except Exception as e:
-        return {"error": str(e)}
+        print("Error creating checkout session:", e)
+        return str(e)
+
+    return {"clientSecret": session.client_secret}
+
+@app.route('/session-status')
+def session_status():
+  session = stripe.checkout.Session.retrieve(Request.args.get('session_id'))
+
+  return {"status": session.status, "customer_email": session.customer_details.email}
+
+
+if __name__ == '__main__':
+    app.run(port=4242)

@@ -70,7 +70,7 @@ const Header = (props: HeaderProps) => {
         <h1
           className={classNames(
             "capitalize width-100 transition-[font-size] duration-1000 ease-in-out",
-            isSticky ? "text-[3em]" : "text-[5em]"
+            isSticky ? "text-[3em] cursor-pointer" : "text-[5em] cursor-default"
           )}
           onClick={() => navigateTo(navigate, "")}
         >
