@@ -1,0 +1,50 @@
+.block {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-us{
+    text-align: left;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+}
+
+.about-us-container{
+    display: block;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.left-header {
+    text-align: left;
+}
+
+.right-header {
+    text-align: right;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.justified-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
