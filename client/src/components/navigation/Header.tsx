@@ -47,8 +47,8 @@ const Header = (props: HeaderProps) => {
   return (
     <div
       className={classNames(
-        "bg-white w-full h-screen top-0 z-10 flex justify-center transition-[height] duration-1000 ease-in-out",
-        isSticky ? "sticky h-[15vh]" : ""
+        "bg-white w-full top-0 z-10 flex justify-center transition-[height] duration-1000 ease-in-out",
+        isSticky ? "sticky h-[15vh]" : "h-screen"
       )}
       style={{
         gridArea: "header",
