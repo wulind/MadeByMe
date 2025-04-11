@@ -12,9 +12,14 @@
 /build
 .vscode/*
 
-# Python bytecode
+# Ignore Python cache files
 __pycache__/
 *.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
 
 # misc
 .DS_Store
