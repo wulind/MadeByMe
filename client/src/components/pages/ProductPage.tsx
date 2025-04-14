@@ -8,15 +8,7 @@ import { CrochetPattern } from "../../types/Product";
 import Header from "../navigation/Header";
 import "./ProductPage.css";
 
-interface ColorWayPickerProps {
-  colors: string[];
-}
-
-const ColorWayPicker = (props: ColorWayPickerProps) => {
-  const [colorway, setColorway] = useState<string[]>(props.colors);
-
-  const openColorPicker = () => {};
-
+const ColorWayPicker = ({ colors }: { colors: string[] }) => {
   return (
     <div className="colorWayViewer">
       <Box
@@ -31,20 +23,49 @@ const ColorWayPicker = (props: ColorWayPickerProps) => {
           },
         }}
       >
-        {props.colors.map((color, index) => {
+        {colors.map((color, index) => {
           return (
-            <>
-              <div
-                key={index}
-                className="rounded-full w-12 h-12 m-4 border-gray-1px-solid"
-                style={{ backgroundColor: color }}
-                onClick={() => {}}
-              />
-            </>
+            <div
+              key={index}
+              className="rounded-full w-12 h-12 m-4 border-gray-500 border-[1px] border-solid"
+              style={{ backgroundColor: color }}
+              onClick={() => {}}
+            />
           );
         })}
       </Box>
     </div>
+  );
+};
+
+const DetailsTable = ({
+  productDetails,
+}: {
+  productDetails: CrochetPattern;
+}) => {
+  return (
+    <table>
+      <tr>
+        <td className="productProperty">{strings.CRAFT}</td>
+        <td className="value">{productDetails?.craft}</td>
+      </tr>
+      <tr>
+        <td className="productProperty">{strings.HOOK_SIZE}</td>
+        <td className="value">{productDetails?.hookSize}</td>
+      </tr>
+      <tr>
+        <td className="productProperty">{strings.GAUGE}</td>
+        <td className="value">{productDetails?.gauge}</td>
+      </tr>
+      <tr>
+        <td className="productProperty">{strings.CATEGORY}</td>
+        <td className="value">{productDetails?.category}</td>
+      </tr>
+      <tr>
+        <td className="productProperty">{strings.LANGUAGE}</td>
+        <td className="value">{productDetails?.language}</td>
+      </tr>
+    </table>
   );
 };
 
@@ -70,33 +91,16 @@ const ProductPage = () => {
         <img src={productDetails?.imageUrl} />
       </div>
       <ColorWayPicker colors={productDetails?.colorways ?? []} />
-      <div className="productDescription">
+      <div className="productInformation">
         <h2 className="productTitle">{productDetails?.title}</h2>
-        <h3 className="price">{`$${productDetails?.price}`}</h3>
-        <h3 className="description">{productDetails?.description}</h3>
-        <button>{strings.ADD_TO_CART}</button>
-        <table>
-          <tr>
-            <td className="productProperty">{strings.CRAFT}</td>
-            <td className="value">{productDetails?.craft}</td>
-          </tr>
-          <tr>
-            <td className="productProperty">{strings.HOOK_SIZE}</td>
-            <td className="value">{productDetails?.hookSize}</td>
-          </tr>
-          <tr>
-            <td className="productProperty">{strings.GAUGE}</td>
-            <td className="value">{productDetails?.gauge}</td>
-          </tr>
-          <tr>
-            <td className="productProperty">{strings.CATEGORY}</td>
-            <td className="value">{productDetails?.category}</td>
-          </tr>
-          <tr>
-            <td className="productProperty">{strings.LANGUAGE}</td>
-            <td className="value">{productDetails?.language}</td>
-          </tr>
-        </table>
+        <h3 className="font-normal">{`$${productDetails?.price}`}</h3>
+        <h3 className="text-[#828282] font-normal">
+          {productDetails?.description}
+        </h3>
+        <button className="bg-black text-white px-5 py-2 rounded my-4 cursor-pointer">
+          {strings.ADD_TO_CART}
+        </button>
+        <DetailsTable productDetails={productDetails as CrochetPattern} />
       </div>
     </div>
   );

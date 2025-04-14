@@ -31,26 +31,8 @@
         "yarnDetails yarnDetails";
 }
 
-button {
-    background-color: black;
-    color: white;
-    padding: 1em 1.5em;
-    border: none;
-    border-radius: 10%;
-    margin: 1em 0;
-    cursor: pointer;
-}
-
-.productDescription{
+.productInformation{
     grid-area: info;
-}
-
-.price, .description {
-    font-weight: normal;
-}
-
-.description {
-    color: #828282;
 }
 
 table, th, td {
