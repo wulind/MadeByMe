@@ -4,11 +4,11 @@ import { useLenis } from "lenis/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import strings from "../../assets/strings/common";
 import {
   navigationMenuKeys,
   navigationStrings,
-} from "../../assets/navigationStrings/navigation";
-import strings from "../../assets/strings/common";
+} from "../../assets/strings/navigation";
 import { navigateTo } from "../../utils/navigation";
 import FixedNav from "./FixedNav";
 

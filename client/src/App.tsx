@@ -1,12 +1,6 @@
 import { EmbeddedCheckoutProvider } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { useEffect, useState } from "react";
-import {
-  Navigate,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import { ROUTES } from "./assets/strings/routes";
 import PatternsPage from "./components/pages/PatternsPage";
@@ -16,7 +10,7 @@ import Home from "./components/pages/home/Home";
 
 // Call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY!);
 
 const fetchClientSecret = () => {
   return fetch("http://localhost:4242/create-checkout-session", {
