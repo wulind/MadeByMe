@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import "./FixedNav.css";
 
 interface FixedNavItemProps {
   id: string;
@@ -14,7 +13,7 @@ const FixedNavItem = (props: FixedNavItemProps) => {
   return (
     <button
       className={classNames(
-        "containerNav relative rounded bg-black",
+        "containerNav relative rounded-3xl m-1 px-5 py-2.5 bg-black hover:bg-white ease-in-out duration-300",
         {
           "hover:bg-grey-600": !props.isCurrent,
           "bg-white": props.index < props.activeIndex,
@@ -24,7 +23,7 @@ const FixedNavItem = (props: FixedNavItemProps) => {
         props.handleScrollto(props.id);
       }}
     >
-      <p className="text-size-small padding-0 margin-0 text-white mix-blend-difference">
+      <p className="text-sm padding-0 margin-0 text-white mix-blend-difference">
         {props.label}
       </p>
     </button>

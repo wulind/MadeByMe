@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import Header from "../navigation/Header";
 import Box from "@mui/material/Box";
-import "./ProductPage.css";
-import { CrochetPattern } from "../../types/Product";
-import strings from "../../assets/strings/strings";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
-// Used for testing purposes only
+import strings from "../../assets/strings/common";
 import { testingData } from "../../data/patterns";
+import { CrochetPattern } from "../../types/Product";
+import Header from "../navigation/Header";
+import "./ProductPage.css";
 
 interface ColorWayPickerProps {
   colors: string[];
@@ -48,23 +48,20 @@ const ColorWayPicker = (props: ColorWayPickerProps) => {
   );
 };
 
-interface ProductPageProps {
-  productId: string; // TODO: product not found page
-}
-
-const ProductPage = (props: ProductPageProps) => {
+const ProductPage = () => {
+  const { productId } = useParams();
   const [productDetails, setProductDetails] = useState<CrochetPattern>();
 
   useEffect(() => {
     let product = testingData.find((p) => {
-      if (p.id === props.productId) {
+      if (p.id === productId) {
         return true;
       }
       return false;
     });
 
     setProductDetails(product as CrochetPattern);
-  }, [props.productId]);
+  }, []);
 
   return (
     <div className="productPage">
@@ -72,7 +69,7 @@ const ProductPage = (props: ProductPageProps) => {
       <div className="productImage">
         <img src={productDetails?.imageUrl} />
       </div>
-      <ColorWayPicker colors={productDetails?.colorways} />
+      <ColorWayPicker colors={productDetails?.colorways ?? []} />
       <div className="productDescription">
         <h2 className="productTitle">{productDetails?.title}</h2>
         <h3 className="price">{`$${productDetails?.price}`}</h3>

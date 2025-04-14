@@ -1,11 +1,16 @@
-import FixedNav from "./FixedNav";
 import Box from "@mui/material/Box";
+import classNames from "classnames";
 import { useLenis } from "lenis/react";
 import { useState } from "react";
-import { navigateTo } from "../../utils/navigation";
 import { useNavigate } from "react-router-dom";
-import classNames from "classnames";
-import strings from "../../assets/strings/strings";
+
+import {
+  navigationMenuKeys,
+  navigationStrings,
+} from "../../assets/navigationStrings/navigation";
+import strings from "../../assets/strings/common";
+import { navigateTo } from "../../utils/navigation";
+import FixedNav from "./FixedNav";
 
 interface HeaderProps {
   isSticky?: boolean;
@@ -28,19 +33,19 @@ const Header = (props: HeaderProps) => {
 
   const fixedNavItems = [
     {
-      key: "home",
-      id: "home",
-      label: strings.HOME,
+      key: navigationMenuKeys.HOME,
+      id: navigationMenuKeys.HOME,
+      label: navigationStrings.HOME,
     },
     {
-      key: "patterns",
-      id: "patterns",
-      label: strings.PATTERNS,
+      key: navigationMenuKeys.PATTERNS,
+      id: navigationMenuKeys.PATTERNS,
+      label: navigationStrings.PATTERNS,
     },
     {
-      key: "aboutus",
-      id: "aboutus",
-      label: strings.ABOUT_US,
+      key: navigationMenuKeys.ABOUT_US,
+      id: navigationMenuKeys.ABOUT_US,
+      label: navigationStrings.ABOUT_US,
     },
   ];
 
@@ -48,7 +53,7 @@ const Header = (props: HeaderProps) => {
     <div
       className={classNames(
         "bg-white w-full top-0 z-10 flex justify-center transition-[height] duration-1000 ease-in-out",
-        isSticky ? "sticky h-[15vh]" : "h-screen"
+        isSticky ? "sticky h-[15vh]" : "h-screen",
       )}
       style={{
         gridArea: "header",
@@ -70,7 +75,9 @@ const Header = (props: HeaderProps) => {
         <h1
           className={classNames(
             "capitalize width-100 transition-[font-size] duration-1000 ease-in-out",
-            isSticky ? "text-[3em] cursor-pointer" : "text-[5em] cursor-default"
+            isSticky
+              ? "text-[3em] cursor-pointer"
+              : "text-[5em] cursor-default",
           )}
           onClick={() => navigateTo(navigate, "")}
         >
@@ -80,7 +87,7 @@ const Header = (props: HeaderProps) => {
         {!isSticky && (
           <>
             <div className="absolute bottom-[35px] text-gray-500 lowercase">
-              {strings.SEE_MORE}
+              {navigationStrings.SEE_MORE}
             </div>
             <i className="material-icons absolute bottom-[10px] text-gray-500">
               expand_more

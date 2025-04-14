@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import strings from "../../assets/strings/strings";
+
+import strings from "../../assets/strings/common";
 
 const RevealText = () => {
   const letters = strings.MADE_BY_STUDIOS.split("");

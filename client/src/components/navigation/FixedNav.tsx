@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { navigateTo } from "../../utils/navigation";
 import FixedNavItem from "./FixedNavItem";
-import "./FixedNav.css";
 
 interface FixedNavProps {
   id: string;
