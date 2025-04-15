@@ -2,7 +2,7 @@ export const navigationStrings = {
   HOME: "Home",
   PATTERNS: "Patterns",
   ABOUT_US: "About us",
-  SEE_MORE: "scroll to see more",
+  SEE_MORE: "discover more",
 };
 
 export const navigationMenuKeys = {

@@ -6,6 +6,7 @@ const strings = {
   CATEGORY: "Category",
   LANGUAGE: "Language",
   MADE_BY_STUDIOS: "MADE BY STUDIOS",
+  SHOP_PATTERNS: "Shop patterns",
 };
 
 export default strings;

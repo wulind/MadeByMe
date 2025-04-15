@@ -84,16 +84,6 @@ const Header = (props: HeaderProps) => {
           {strings.MADE_BY_STUDIOS}
         </h1>
         <FixedNav id={"fixed-nav"} items={fixedNavItems} />
-        {!isSticky && (
-          <>
-            <div className="absolute bottom-[35px] text-gray-500 lowercase">
-              {navigationStrings.SEE_MORE}
-            </div>
-            <i className="material-icons absolute bottom-[10px] text-gray-500">
-              expand_more
-            </i>
-          </>
-        )}
       </Box>
     </div>
   );
