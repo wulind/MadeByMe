@@ -1,5 +1,5 @@
 import {
-  MotionOptions,
+  MotionStyle,
   motion,
   useAnimationFrame,
   useMotionValue,
@@ -55,7 +55,7 @@ const CircularGallery = ({ imgsInfo }: { imgsInfo: ImageInfo[] }) => {
             top: "50%",
             translateX: "-50%",
             translateY: "-50%",
-          } as MotionOptions
+          } as MotionStyle
         }
       />
     );
