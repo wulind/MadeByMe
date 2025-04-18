@@ -1,6 +1,6 @@
 import { useTexture } from "@react-three/drei";
-import { extend, useFrame } from "@react-three/fiber";
-import { Suspense, useEffect, useMemo, useRef } from "react";
+import { extend } from "@react-three/fiber";
+import { useEffect, useMemo } from "react";
 import { ShaderPass } from "three-stdlib";
 
 import { RippleRenderer } from "./ripple";

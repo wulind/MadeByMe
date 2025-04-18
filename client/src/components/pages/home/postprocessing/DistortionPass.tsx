@@ -1,5 +1,5 @@
-import { extend, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { extend } from "@react-three/fiber";
+import { useMemo } from "react";
 import { ShaderPass } from "three-stdlib";
 
 extend({ ShaderPass });
