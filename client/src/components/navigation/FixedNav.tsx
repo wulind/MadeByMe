@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { navigateTo } from "../../utils/navigation";
 import FixedNavItem from "./FixedNavItem";
 
@@ -31,8 +32,6 @@ const FixedNav = (props: FixedNavProps) => {
               {...props}
               handleScrollto={(path: string) => navigateTo(navigate, path)}
               index={i}
-              isCurrent={currentSection === i}
-              activeIndex={currentSection}
             />
           );
         })}

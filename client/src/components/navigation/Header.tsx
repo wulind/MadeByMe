@@ -9,6 +9,7 @@ import {
   navigationMenuKeys,
   navigationStrings,
 } from "../../assets/strings/navigation";
+import { ROUTES } from "../../assets/strings/routes";
 import { navigateTo } from "../../utils/navigation";
 import FixedNav from "./FixedNav";
 
@@ -36,16 +37,19 @@ const Header = (props: HeaderProps) => {
       key: navigationMenuKeys.HOME,
       id: navigationMenuKeys.HOME,
       label: navigationStrings.HOME,
+      navigationLink: ROUTES.HOME,
     },
     {
       key: navigationMenuKeys.PATTERNS,
       id: navigationMenuKeys.PATTERNS,
       label: navigationStrings.PATTERNS,
+      navigationLink: ROUTES.COLLECTIONS.PATTERNS,
     },
     {
       key: navigationMenuKeys.ABOUT_US,
       id: navigationMenuKeys.ABOUT_US,
       label: navigationStrings.ABOUT_US,
+      navigationLink: ROUTES.ABOUT_US,
     },
   ];
 
