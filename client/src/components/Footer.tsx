@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 const Copyright = () => (
   <Typography variant="body2" sx={{ color: "text.secondary", mt: 1 }}>
     {"Copyright © "}
-    <Link color="text.secondary">MadeByMe</Link>
+    <Link color="text.secondary">MadeByStudios</Link>
     &nbsp;
     {new Date().getFullYear()}
   </Typography>

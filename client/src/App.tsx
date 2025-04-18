@@ -7,6 +7,7 @@ import PatternsPage from "./components/pages/PatternsPage";
 import ProductPage from "./components/pages/ProductPage";
 import { CheckoutForm } from "./components/pages/checkout/CheckoutForm";
 import Home from "./components/pages/home/Home";
+import HeroSection from "./components/pages/home/TitleSection";
 
 // Call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
