@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Client available scripts
 
-In the project directory, you can run:
+In the client directory, you can run:
 
 ### `npm start`
 
@@ -68,3 +68,25 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Server
+
+To start the server, begin by creating a virutal environment
+
+### 1. Create/start virual environment
+Mac/Linux:
+
+`python3 -m venv venv`
+`source venv/bin/activate`
+
+Windows:
+`python -m venv venv`
+`.\venv\Scripts\Activate.ps1`
+
+### 2. Install requirements
+`pip install -r requirements.txt`
+
+### 3. Start server
+It's recommended to have 2 terminals open, one running the client and one running the server.
+Once running, the server will be available at http://localhost:4242.
+`uvicorn main:app --reload --port 4242`
