@@ -2,10 +2,10 @@ import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import strings from "../../assets/strings/common";
-import { testingData } from "../../data/patterns";
-import { CrochetPattern } from "../../types/Product";
-import Header from "../navigation/Header";
+import strings from "../../../assets/strings/common";
+import { testingData } from "../../../data/patterns";
+import { CrochetPattern } from "../../../types/Product";
+import Header from "../../navigation/Header";
 import "./ProductPage.css";
 
 const ColorWayPicker = ({ colors }: { colors: string[] }) => {
@@ -86,7 +86,7 @@ const ProductPage = () => {
 
   return (
     <div className="productPage">
-      <Header isSticky={true} />
+      <Header />
       <div className="productImage">
         <img src={productDetails?.imageUrl} />
       </div>

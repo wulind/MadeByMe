@@ -1,6 +1,6 @@
 export const navigationStrings = {
   HOME: "Home",
-  PATTERNS: "Patterns",
+  SHOP: "Shop",
   ABOUT_US: "About us",
   SEE_MORE: "discover more",
 };

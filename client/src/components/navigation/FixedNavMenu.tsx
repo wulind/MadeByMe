@@ -1,13 +1,18 @@
 import classNames from "classnames";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import "./HamburgerIcon.css";
+import { navigationStrings } from "../../assets/strings/navigation";
+import { ROUTES } from "../../assets/strings/routes";
+import { navigateTo } from "../../utils/navigation";
+import "./NavMenu.css";
 
 const HamburgerIcon = ({
   onClick,
   isNavOpen,
 }: {
-  onClick: () => null;
+  onClick: () => void;
   isNavOpen: boolean;
 }) => {
   const onNavClick = () => {
@@ -36,13 +41,58 @@ const HamburgerIcon = ({
 };
 
 const FixedNavMenu = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  return isOpen ? (
-    <div className="fixed top-0 left-0 w-[50%] h-full bg-white opacity-50 z-50">
-      <HamburgerIcon onClick={() => null} isNavOpen={true} />
-    </div>
-  ) : (
-    <HamburgerIcon onClick={() => null} isNavOpen={false} />
+  const [currentSelection, setCurrentSeletion] = useState(null);
+
+  const isOpenMotionValue = useMotionValue(0);
+  const isOpenSpring = useSpring(isOpenMotionValue, {
+    stiffness: 100,
+    damping: 20,
+  });
+
+  const translateX = useTransform(isOpenSpring, [0, 1], ["-100%", "0%"]);
+
+  const onNavOpen = () => {
+    setIsOpen(!isOpen);
+    isOpenMotionValue.set(!isOpen ? 1 : 0);
+  };
+
+  const handleOnNavClick = (pageName: string) => {
+    navigateTo(navigate, pageName);
+  };
+
+  return (
+    <>
+      <HamburgerIcon onClick={() => onNavOpen()} isNavOpen={isOpen} />
+      <motion.div
+        className="fixed top-0 left-0 w-[500px] h-full bg-black opacity-70 z-50"
+        style={{ x: translateX }}
+      >
+        <div className="flex flex-col items-center justify-center h-full">
+          <ul className="mt-4 space-y-4">
+            <li
+              className="text-white text-2xl cursor-pointer"
+              onClick={() => handleOnNavClick(ROUTES.HOME)}
+            >
+              {navigationStrings.HOME}
+            </li>
+            <li
+              className="text-white text-2xl cursor-pointer"
+              onClick={() => handleOnNavClick(ROUTES.COLLECTIONS.PATTERNS)}
+            >
+              {navigationStrings.SHOP}
+            </li>
+            <li
+              className="text-white text-2xl cursor-pointer"
+              onClick={() => handleOnNavClick(ROUTES.ABOUT_US)}
+            >
+              {navigationStrings.ABOUT_US}
+            </li>
+          </ul>
+        </div>
+      </motion.div>
+    </>
   );
 };
 

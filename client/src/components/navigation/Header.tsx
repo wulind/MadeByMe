@@ -11,84 +11,25 @@ import {
 } from "../../assets/strings/navigation";
 import { ROUTES } from "../../assets/strings/routes";
 import { navigateTo } from "../../utils/navigation";
-import FixedNav from "./FixedNav";
+import FixedNavMenu from "./FixedNavMenu";
 
-interface HeaderProps {
-  isSticky?: boolean;
-}
-
-const Header = (props: HeaderProps) => {
-  const [isSticky, setIsSticky] = useState(props.isSticky || false);
+const Header = () => {
   const navigate = useNavigate();
-
-  useLenis((e) => {
-    if (isSticky) return;
-
-    const maxScroll = 1; // Maximum scroll value for the header to be sticky
-    if (e.scroll > maxScroll) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
-  });
-
-  const fixedNavItems = [
-    {
-      key: navigationMenuKeys.HOME,
-      id: navigationMenuKeys.HOME,
-      label: navigationStrings.HOME,
-      navigationLink: ROUTES.HOME,
-    },
-    {
-      key: navigationMenuKeys.PATTERNS,
-      id: navigationMenuKeys.PATTERNS,
-      label: navigationStrings.PATTERNS,
-      navigationLink: ROUTES.COLLECTIONS.PATTERNS,
-    },
-    {
-      key: navigationMenuKeys.ABOUT_US,
-      id: navigationMenuKeys.ABOUT_US,
-      label: navigationStrings.ABOUT_US,
-      navigationLink: ROUTES.ABOUT_US,
-    },
-  ];
 
   return (
     <div
-      className={classNames(
-        "bg-white w-full top-0 z-10 flex justify-center transition-[height] duration-1000 ease-in-out",
-        isSticky ? "sticky h-[15vh]" : "h-screen",
-      )}
+      className="bg-black w-full top-0 z-50 flex justify-center items-center sticky h-[15vh]"
       style={{
         gridArea: "header",
       }}
     >
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          "& > *": {
-            // CSS selector that targets all direct child elements of Box component
-            m: 0, // Applies margin to all direct child elements of Box component
-          },
-        }}
+      <FixedNavMenu />
+      <h1
+        className="capitalize width-100 text-[3em] cursor-pointer text-white font-bold"
+        onClick={() => navigateTo(navigate, "")}
       >
-        <h1
-          className={classNames(
-            "capitalize width-100 transition-[font-size] duration-1000 ease-in-out",
-            isSticky
-              ? "text-[3em] cursor-pointer"
-              : "text-[5em] cursor-default",
-          )}
-          onClick={() => navigateTo(navigate, "")}
-        >
-          {strings.MADE_BY_STUDIOS}
-        </h1>
-        <FixedNav id={"fixed-nav"} items={fixedNavItems} />
-      </Box>
+        {strings.MADE_BY_STUDIOS}
+      </h1>
     </div>
   );
 };

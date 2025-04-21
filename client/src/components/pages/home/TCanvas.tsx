@@ -1,10 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
+import { ImagePlane } from "../../common/ImagePlane";
 import { Effect } from "./Effect";
-import { ImagePlane } from "./ImagePlane";
 
 export const TCanvas = () => {
+  const imageSrc = ["unraveland.webp", "unraveland2.webp", "unraveland3.webp"];
   return (
     <Canvas
       camera={{
@@ -18,7 +19,7 @@ export const TCanvas = () => {
     >
       <color attach="background" args={["#000"]} />
       <Suspense fallback={null}>
-        <ImagePlane />
+        <ImagePlane images={imageSrc} />
       </Suspense>
       <Effect />
     </Canvas>

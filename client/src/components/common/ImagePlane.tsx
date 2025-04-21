@@ -1,13 +1,17 @@
 import { Plane, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-export const ImagePlane = () => {
-  const path = (name: string) => `/images/${name}.webp`;
-  const textures = useTexture([
-    path("unraveland"),
-    path("unraveland2"),
-    path("unraveland3"),
-  ]);
+interface ImagePlaneProps {
+  images: string[];
+}
+
+export const ImagePlane = (props: ImagePlaneProps) => {
+  const path = (name: string) => `/images/${name}`;
+  const textures = useTexture(
+    props.images.map((imgSrc: string) => {
+      return path(imgSrc);
+    }),
+  );
 
   const material = (texture: THREE.Texture) =>
     new THREE.ShaderMaterial({
