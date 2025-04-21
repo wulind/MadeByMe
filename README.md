@@ -77,10 +77,13 @@ To start the server, begin by creating a virutal environment
 Mac/Linux:
 
 `python3 -m venv venv`
+
 `source venv/bin/activate`
 
 Windows:
+
 `python -m venv venv`
+
 `.\venv\Scripts\Activate.ps1`
 
 ### 2. Install requirements
@@ -89,4 +92,5 @@ Windows:
 ### 3. Start server
 It's recommended to have 2 terminals open, one running the client and one running the server.
 Once running, the server will be available at http://localhost:4242.
+
 `uvicorn main:app --reload --port 4242`
