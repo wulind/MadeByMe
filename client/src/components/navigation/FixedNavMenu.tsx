@@ -66,7 +66,7 @@ const FixedNavMenu = () => {
     <>
       <HamburgerIcon onClick={() => onNavOpen()} isNavOpen={isOpen} />
       <motion.div
-        className="fixed top-0 left-0 w-[500px] h-full bg-black opacity-70 z-50"
+        className="fixed top-0 left-0 w-[300px] h-full bg-black opacity-70 z-50"
         style={{ x: translateX }}
       >
         <div className="flex flex-col items-center justify-center h-full">

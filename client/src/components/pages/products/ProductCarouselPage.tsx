@@ -1,38 +1,85 @@
-import {
-  Environment,
-  Image,
-  ScrollControls,
-  useScroll,
-} from "@react-three/drei";
+import { Image, Text } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { useLenis } from "lenis/react";
 import { useRef, useState } from "react";
 import * as THREE from "three";
 
-import Header from "../navigation/Header";
+import { Product } from "../../../types/Product";
+import Header from "../../navigation/Header";
+import "./ProductCarouselPage.css";
 
-const ProductPage = () => {
+interface ProductCarouselPageProps {
+  products: Product[];
+}
+
+const ProductCarouselPage = (props: ProductCarouselPageProps) => {
+  // Which product card is currently showing
+  const [activeIndex, setActiveIndex] = useState(0);
+  const lenis = useLenis();
+
+  lenis?.on("scroll", ({ progress }) => {
+    const index = Math.round(progress * (props.products.length - 1));
+    setActiveIndex(index);
+  });
+
+  const scrollToCard = (index: number) => {
+    if (0 <= index || index <= props.products.length) {
+      setActiveIndex(index);
+      if (lenis) {
+        const clamped = Math.max(0, Math.min(index, props.products.length - 1));
+        const scrollY =
+          (clamped / (props.products.length - 1)) * lenis.limit
+            ? lenis.limit
+            : 0;
+        lenis.scrollTo(scrollY);
+      }
+    }
+  };
+
   return (
-    <div className="w-screen h-screen">
+    <div className="grid-container w-screen h-screen bg-black">
       <Header />
-      <Canvas camera={{ position: [0, 0, 20], fov: 10 }}>
-        <ScrollControls pages={4} infinite>
-          <Rig rotation={[0, 0, 0.15]}>
-            <Carousel />
+
+      {/* Product carousel */}
+      <div className="carousel-container flex justify-center items-center">
+        <Canvas camera={{ position: [0, 0, 10], fov: 10 }}>
+          <Rig>
+            <Carousel
+              products={props.products}
+              activeIndex={activeIndex}
+            ></Carousel>
           </Rig>
-        </ScrollControls>
-        <Environment preset="dawn" background blur={0.5} />
-      </Canvas>
+        </Canvas>
+      </div>
+
+      {/* Scroll arrows */}
+      <div className="nav-buttons flex justify-center z-50">
+        <div
+          className="w-[72px] h-[26px] cursor-pointer"
+          style={{
+            backgroundImage: "url(/images/navi_left.png)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+          }}
+          onClick={() => scrollToCard(activeIndex - 1)}
+        />
+        <p className="text-white uppercase">Scroll</p>
+        <div
+          className="w-[72px] h-[26px] cursor-pointer"
+          style={{
+            backgroundImage: "url(/images/navi_right.png)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+          }}
+          onClick={() => scrollToCard(activeIndex + 1)}
+        />
+      </div>
     </div>
   );
 };
 
 const Rig = (props: any) => {
-  const ref = useRef<THREE.Mesh | null>(null);
-  const scroll = useScroll();
   useFrame((state, delta) => {
-    if (ref.current) {
-      ref.current.rotation.y = -scroll.offset * (Math.PI * 2); // Rotate contents 360 degrees
-    }
     const target = new THREE.Vector3(
       -state.pointer.x * 2,
       state.pointer.y + 1.5,
@@ -42,31 +89,58 @@ const Rig = (props: any) => {
     state.camera.lookAt(0, 0, 0); // Look at center
   });
 
-  return <group ref={ref} {...props} />;
+  return <group {...props} />;
 };
 
-const Carousel = ({ radius = 1.4, count = 8 }) => {
-  return Array.from({ length: count }, (_, i) => (
-    <Card
-      key={i}
-      url={`/images/unraveland2.webp`}
-      position={[
-        Math.sin((i / count) * Math.PI * 2) * radius,
-        0,
-        Math.cos((i / count) * Math.PI * 2) * radius,
-      ]}
-      rotation={[0, Math.PI + (i / count) * Math.PI * 2, 0]}
-    />
-  ));
+const CARD_SPACING = 1.5; // Adjust spacing between cards
+
+const Carousel = ({
+  products,
+  activeIndex,
+}: {
+  products: Product[];
+  activeIndex: number;
+}) => {
+  return (
+    <>
+      {products.map((product, i) => {
+        if (Math.abs(i - activeIndex) > 1) return null;
+
+        const offset = i - activeIndex;
+        const position = [offset * CARD_SPACING, 0, 0]; // side by side layout
+        const isActive = i === activeIndex;
+
+        return (
+          <Card
+            key={i}
+            title={product.title}
+            price={product.price.toString()}
+            imgSrc={product.imageUrl}
+            position={position as [number, number, number]}
+            isActive={isActive}
+          />
+        );
+      })}
+    </>
+  );
 };
 
-const Card = ({ url, ...props }: { url: string }) => {
+interface CardProps {
+  imgSrc: string;
+  title: string;
+  price: string;
+  position: [number, number, number];
+  isActive: boolean;
+}
+
+const Card = (props: CardProps) => {
   const ref = useRef<THREE.Mesh | null>(null);
-  const [hovered, hover] = useState(false);
-  const pointerOver = (e: Event) => (e.stopPropagation(), hover(true));
-  const pointerOut = () => hover(false);
+  const [hover, setHover] = useState(false);
+  const pointerOver = (e: Event) => (e.stopPropagation(), setHover(true));
+  const pointerOut = () => setHover(false);
+
   useFrame((_, delta) => {
-    const targetScale = hovered ? 1.15 : 1;
+    const targetScale = hover ? 1.15 : 1;
     const smoothing = 1 - Math.exp(-10 * delta); // ≈ 0.1 damping
 
     if (ref.current) {
@@ -77,33 +151,63 @@ const Card = ({ url, ...props }: { url: string }) => {
       );
 
       // Smoothly animate hover effect
-      const radiusTarget = hovered ? 0.25 : 0.1;
+      const radiusTarget = hover ? 0.25 : 0.1;
       (ref.current.material as any).radius +=
         (radiusTarget - (ref.current.material as any).radius) *
         (1 - Math.exp(-10 * delta)); // ≈ 0.2 damping
 
-      const zoomTarget = hovered ? 1 : 1.5;
+      const zoomTarget = hover ? 1 : 1.25;
       (ref.current.material as any).zoom +=
         (zoomTarget - (ref.current.material as any).zoom) *
         (1 - Math.exp(-10 * delta));
     }
   });
   return (
-    <Image
-      ref={ref}
-      url={url}
-      transparent
-      side={THREE.DoubleSide}
-      onPointerOver={pointerOver}
-      onPointerOut={pointerOut}
-      {...props}
-    >
-      <planeGeometry args={[1, 1]} />
-    </Image>
+    <>
+      {props.isActive && hover ? (
+        <>
+          <Text
+            fontSize={0.1}
+            anchorY="bottom"
+            anchorX="right"
+            color="black"
+            lineHeight={0.8}
+            position={[0.5, -0.6, 0.1]}
+          >
+            {props.title}
+          </Text>
+          <Text
+            fontSize={0.1}
+            anchorY="bottom"
+            anchorX="right"
+            color="black"
+            lineHeight={0.8}
+            position={[0.5, -0.7, 0.1]}
+          >
+            {props.price}
+          </Text>
+        </>
+      ) : (
+        <></>
+      )}
+      <Image
+        ref={ref}
+        url={props.imgSrc}
+        transparent
+        grayscale={props.isActive ? 0 : 1}
+        side={THREE.DoubleSide}
+        onPointerOver={pointerOver}
+        onPointerOut={pointerOut}
+        {...props}
+        onClick={() => {}}
+      >
+        <planeGeometry args={[1.2, 1.5]} />
+      </Image>
+    </>
   );
 };
 
-export default ProductPage;
+export default ProductCarouselPage;
 
 // import { motion } from "framer-motion";
 // import { useState } from "react";

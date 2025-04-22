@@ -1,15 +1,6 @@
-import Box from "@mui/material/Box";
-import classNames from "classnames";
-import { useLenis } from "lenis/react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import strings from "../../assets/strings/common";
-import {
-  navigationMenuKeys,
-  navigationStrings,
-} from "../../assets/strings/navigation";
-import { ROUTES } from "../../assets/strings/routes";
 import { navigateTo } from "../../utils/navigation";
 import FixedNavMenu from "./FixedNavMenu";
 
@@ -18,7 +9,7 @@ const Header = () => {
 
   return (
     <div
-      className="bg-black w-full top-0 z-50 flex justify-center items-center sticky h-[15vh]"
+      className="bg-transparent w-full top-0 z-50 flex justify-center items-center sticky h-[15vh]"
       style={{
         gridArea: "header",
       }}

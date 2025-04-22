@@ -3,11 +3,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import { ROUTES } from "./assets/strings/routes";
-import PatternsPage from "./components/pages/PatternsPage";
 import { CheckoutForm } from "./components/pages/checkout/CheckoutForm";
 import Home from "./components/pages/home/Home";
-import HeroSection from "./components/pages/home/TitleSection";
+import ProductCarouselPage from "./components/pages/products/ProductCarouselPage";
 import ProductPage from "./components/pages/products/ProductPage";
+import { productData } from "./data/patterns";
+import { Product } from "./types/Product";
 
 // Call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -37,7 +38,9 @@ const App = () => {
           <Route path={ROUTES.CHECKOUT} element={<CheckoutForm />} />
           <Route
             path={ROUTES.COLLECTIONS.PATTERNS}
-            element={<PatternsPage />}
+            element={
+              <ProductCarouselPage products={productData as Product[]} />
+            }
           />
         </Routes>
       </EmbeddedCheckoutProvider>
