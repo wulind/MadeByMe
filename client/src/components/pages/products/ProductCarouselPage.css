@@ -1,0 +1,16 @@
+.grid-container {
+    display: grid;
+    grid-template-rows: 15vh 1fr 75px;
+    grid-template-areas:
+    "header"
+    "carousel-container"
+    "nav-buttons";
+}
+
+.nav-buttons{
+    grid-area: nav-buttons;
+}
+
+.carousel-container {
+    grid-area: carousel-container;
+}
