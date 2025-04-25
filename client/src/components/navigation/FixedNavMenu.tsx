@@ -89,6 +89,12 @@ const FixedNavMenu = () => {
             >
               {navigationStrings.ABOUT_US}
             </li>
+            <li
+              className="text-white text-2xl cursor-pointer"
+              onClick={() => handleOnNavClick(ROUTES.CONTACT_US)}
+            >
+              {navigationStrings.CONTACT_US}
+            </li>
           </ul>
         </div>
       </motion.div>

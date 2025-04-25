@@ -8,6 +8,8 @@ import { CheckoutForm } from "./components/pages/checkout/CheckoutForm";
 import Home from "./components/pages/home/Home";
 import HeroSection from "./components/pages/home/TitleSection";
 import ProductPage from "./components/pages/products/ProductPage";
+import AboutUs from "./components/pages/aboutUs/AboutUs";
+import ContactUs from "./components/pages/contactUs/ContactUs";
 
 // Call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -39,6 +41,8 @@ const App = () => {
             path={ROUTES.COLLECTIONS.PATTERNS}
             element={<PatternsPage />}
           />
+          <Route path={ROUTES.ABOUT_US} element={<AboutUs />} />
+          <Route path={ROUTES.CONTACT_US} element={<ContactUs />} />
         </Routes>
       </EmbeddedCheckoutProvider>
     </Router>
