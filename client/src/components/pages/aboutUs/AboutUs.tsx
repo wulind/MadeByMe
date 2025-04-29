@@ -14,11 +14,11 @@ const AboutUs = () => {
                     Welcome to Made By Studios! We’re two friends who turned a shared hobby into something much more. Our journey began with a simple ball of yarn and a desire to make something meaningful with our hands. Late-night crafting sessions quickly became our favorite creative escape, and over time, crocheting evolved into a true passion. What started as gifting handmade items to friends and family soon sparked the idea to share our designs with a broader community.
                 </p>
 
-                <p className="description">
+                <p>
                     At Made By Studios, we're driven by a love for all things handmade — especially cozy, cute, and heartfelt creations. Our goal is not only to share our own crochet patterns, but to inspire others to make them their own. The name Made By Studios reflects that vision: the patterns are made by us, but the magic happens when you bring them to life. Whether it’s a keychain with a personal twist or a wearable crafted for someone special, we love seeing how each creation carries a unique story.
                 </p>
 
-                <p className="description">
+                <p>
                     We truly want this to be more than just a pattern shop — we hope to build a creative, uplifting space where makers of all levels can connect, share experiences, and support one another. We’d love to hear your stories, see your interpretations, and grow together as a community. Whether you're just picking up a hook for the first time or have years of experience, we're so glad you're here. Thank you for joining us on this journey — we can’t wait to see what you’ll make!
                 </p>
             </div>

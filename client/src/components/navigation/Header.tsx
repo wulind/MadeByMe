@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <div
-      className="bg-transparent w-full top-0 z-50 flex justify-center items-center sticky h-[15vh]"
+      className="bg-black w-full top-0 z-50 flex justify-center items-center sticky h-[15vh]"
       style={{
         gridArea: "header",
       }}

@@ -34,24 +34,24 @@
 }
 
 .handle {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: gray;
     margin-bottom: 0.5rem;
 }
 
 .subheader {
-    font-weight: 500;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
 }
 
 .description{
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.6;
 }
 
 .aboutTextBlock {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .aboutTextBlock p{
