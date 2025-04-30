@@ -2,6 +2,8 @@
 
 MadeByStudios is an exploration into a creative storefront built with React and Stripe, designed to sell digital crochet patterns with a premium, animated user experience.
 
+![Home page - Animated gif demo](demo/HomePage.gif)
+
 This project was built with:
 Frontend: React, TypeScript, Framer Motion, Tailwind CSS, React Three Fiber, Lenis smooth scroll
 Backend: Python (FastAPI), Stripe
