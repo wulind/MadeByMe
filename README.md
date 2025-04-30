@@ -6,6 +6,7 @@ MadeByStudios is an exploration into a creative storefront built with React and 
 
 This project was built with:
 Frontend: React, TypeScript, Framer Motion, Tailwind CSS, React Three Fiber, Lenis smooth scroll
+
 Backend: Python (FastAPI), Stripe
 
 ## Client available scripts
