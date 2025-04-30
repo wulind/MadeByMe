@@ -20,7 +20,18 @@
     margin-bottom: 1rem;
 }
 
-.textSection {
+.introTextBlock {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+}
+
+.introTextBlock p{
+    text-indent: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.textComponent {
     flex: 1 1 300px;
     max-width: 600px;
     justify-content: center;
@@ -28,7 +39,7 @@
     font-family: 'Playfair Display', serif;
 }
 
-.textSection h2 {
+.textComponent h2 {
     font-size: 2rem;
     font-weight: bold;
 }
@@ -49,17 +60,6 @@
     line-height: 1.6;
 }
 
-.aboutTextBlock {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-}
-
-.aboutTextBlock p{
-    text-indent: 2rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
 .imageSection {
     flex: 1 1 300px;
     display: flex;
@@ -76,17 +76,17 @@
 }
 
 @media (max-width: 768px) {
-    .aboutContainer {
+    .aboutUsContainer {
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        text-align: left;
     }
 
-    .textSection {
-        max-width: 100%;
+    .textComponent {
+        max-width: 90%;
     }
 
     .imageSection img {
-        max-width: 80%;
+        max-width: 90%;
     }
 }

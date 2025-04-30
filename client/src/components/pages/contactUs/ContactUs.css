@@ -20,12 +20,12 @@
     margin-bottom: 1rem;
 }
 
-.contactUsTextBlock {
+.introTextBlock {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
 }
 
-.contactUsTextBlock p{
+.introTextBlock p{
     text-indent: 2rem;
     margin-bottom: 2rem;
     line-height: 1.6;

@@ -9,7 +9,7 @@ const AboutUs = () => {
 
         <div className="titleSection">
             <h2> About Us </h2>
-            <div className="aboutTextBlock">
+            <div className="introTextBlock">
                 <p>
                     Welcome to Made By Studios! We’re two friends who turned a shared hobby into something much more. Our journey began with a simple ball of yarn and a desire to make something meaningful with our hands. Late-night crafting sessions quickly became our favorite creative escape, and over time, crocheting evolved into a true passion. What started as gifting handmade items to friends and family soon sparked the idea to share our designs with a broader community.
                 </p>
@@ -25,8 +25,7 @@ const AboutUs = () => {
         </div>
         
         <div className="aboutUsContainer">
-
-            <div className="textSection">
+            <div className="textComponent">
                 <h2> Linda </h2>
                 <p className="handle">@linda.wu723</p>
                 <p className="subheader">5+ year crochet experience, 100+ items crafted</p>
@@ -41,12 +40,11 @@ const AboutUs = () => {
         </div>
 
         <div className="aboutUsContainer">
-
             <div className="imageSection">
                 <img src="/images/aboutUs1.jpeg" />
             </div>
 
-            <div className="textSection">
+            <div className="textComponent">
                 <h2> Junning </h2>
                 <p className="handle">@attackonjun</p>
                 <p className="subheader">2+ year crochet experience, 40+ items created</p>
