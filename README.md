@@ -4,15 +4,16 @@ MadeByStudios is an exploration into a creative storefront built with React and 
 
 ![Home page - Animated gif demo](demo/HomeScreen.gif)
 
-This project was built with:
-Frontend: React, TypeScript, Framer Motion, Tailwind CSS, React Three Fiber, Lenis smooth scroll
 
-Backend: Python (FastAPI), Stripe
+## Technologies used:
+Frontend: TypeScript, [React](https://react.dev/), [Framer Motion](https://motion.dev/), [Tailwind CSS](https://tailwindcss.com/), [ThreeJS](https://threejs.org/), [React Three Fiber](https://r3f.docs.pmnd.rs/), [Lenis smooth scroll
+](https://github.com/darkroomengineering/lenis)\
+Backend: Python ([FastAPI](https://fastapi.tiangolo.com/)), [Stripe](https://docs.stripe.com/sdks/stripejs-react)
 
-## Client available scripts
+## Run client
+Assumes local instal of [Node.js](https://nodejs.org/en)
 
 In the client directory, you can run:
-
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -46,37 +47,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-## Server
+## Run server
 
 To start the server, begin by creating a virutal environment
 
