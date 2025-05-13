@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Client requirements 
+
+In the `client` directory, create a `.env` file and add your Web3Form access key and Stripe publishable key. These are required before running the app.
+
 ## Client available scripts
 
 In the client directory, you can run:
@@ -88,6 +92,8 @@ Windows:
 
 ### 2. Install requirements
 `pip install -r requirements.txt`
+
+In the `server` directory, create a `.env` file and add the Stripe secret key. This is required before running the server.
 
 ### 3. Start server
 It's recommended to have 2 terminals open, one running the client and one running the server.

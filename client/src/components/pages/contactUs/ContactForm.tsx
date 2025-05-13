@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { contactUsString } from '../../../assets/strings/contactUs';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -15,12 +16,14 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const formAccessKey = process.env.REACT_APP_WEB3FORM_KEY!;
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending...");
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "573a7c48-7b84-41c8-b49b-c7e8eee147dc");
+    formData.append("access_key", formAccessKey);
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST", 
@@ -30,24 +33,28 @@ const ContactForm = () => {
     const data = await response.json();
 
     if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
+      setResult(contactUsString.CONTACT_FORM_SUCCESS_MESSAGE);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: ''
+      });
     } else {
-      console.log("Error", data);
-      setResult(data.message);
+      console.log("Error", data.message);
+      setResult(contactUsString.CONTACT_FORM_FAILURE_MESSAGE);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-4 space-y-4">
+    <form onSubmit={handleSubmit} className="max-w-xl pb-4 pt-4 space-y-4">
       <div className="flex gap-4">
         <div className="flex flex-col w-1/2">
-          <label htmlFor="firstName" className="text-sm text-gray-700 mb-1">First Name</label>
+          <label htmlFor="firstName" className="mb-1"> {contactUsString.CONTACT_FORM_LABEL_FIRST_NAME} </label>
           <input
             id="firstName"
             type="text"
             name="firstName"
-            placeholder="John"
             value={formData.firstName}
             onChange={handleChange}
             className="border border-gray-300 p-2 rounded"
@@ -56,12 +63,11 @@ const ContactForm = () => {
         </div>
 
         <div className="flex flex-col w-1/2">
-          <label htmlFor="lastName" className="text-sm text-gray-700 mb-1">Last Name</label>
+          <label htmlFor="lastName" className="mb-1"> {contactUsString.CONTACT_FORM_LABEL_LAST_NAME} </label>
           <input
             id="lastName"
             type="text"
             name="lastName"
-            placeholder="Doe"
             value={formData.lastName}
             onChange={handleChange}
             className="border border-gray-300 p-2 rounded"
@@ -72,12 +78,11 @@ const ContactForm = () => {
       </div>
 
       <div className="flex flex-col">
-        <label htmlFor="email" className="text-sm text-gray-700 mb-1">Email Address</label>
+        <label htmlFor="email" className="mb-1"> {contactUsString.CONTACT_FORM_LABEL_EMAIL_ADDRESS} </label>
         <input
           id="email"
           type="email"
           name="email"
-          placeholder="JohnDoe@mail.com"
           value={formData.email}
           onChange={handleChange}
           className="w-full border border-gray-300 p-2 rounded"
@@ -86,30 +91,29 @@ const ContactForm = () => {
       </div>
 
       <div className="flex flex-col">
-        <label htmlFor="message" className="text-sm text-gray-700 mb-1">Your Message</label>
+        <label htmlFor="message" className="mb-1"> {contactUsString.CONTACT_FORM_LABEL_YOUR_MSG} </label>
         <textarea
           id="message"
           name="message"
-          placeholder="For crochet pattern xxx, I'm stuck on step #3..."
           value={formData.message}
           onChange={handleChange}
           rows={5}
-          className="w-full border border-gray-300 p-2 rounded"
+          className="w-full border border-gray-300 p-2 mb-1 rounded"
           required
         />
       </div>
 
       <button
         type="submit"
-        className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition"
+        className="bg-gray-800 text-white w-full py-2 rounded hover:bg-gray-800 transition"
       >
-        Submit
+        {contactUsString.CONTACT_FORM_LABEL_SUBMIT_BUTTON}
       </button>
 
       <div>
         {result}
       </div>
-      
+
     </form>
   );
 };

@@ -72,7 +72,7 @@ const DetailsTable = ({
 const ProductPage = () => {
   const { productId } = useParams();
   const [productDetails, setProductDetails] = useState<CrochetPattern>();
- 
+
   useEffect(() => {
     let product = testingData.find((p) => {
       if (p.id === productId) {
