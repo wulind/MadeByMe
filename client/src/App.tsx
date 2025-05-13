@@ -5,7 +5,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ROUTES } from "./assets/strings/routes";
 import { CheckoutForm } from "./components/pages/checkout/CheckoutForm";
 import Home from "./components/pages/home/Home";
-import ProductCarouselPage from "./components/pages/products/ProductCarouselPage";
+import ProductGallery from "./components/pages/products/ProductGalleryPage";
 import ProductPage from "./components/pages/products/ProductPage";
 import { productData } from "./data/patterns";
 import { Product } from "./types/Product";
@@ -38,9 +38,7 @@ const App = () => {
           <Route path={ROUTES.CHECKOUT} element={<CheckoutForm />} />
           <Route
             path={ROUTES.COLLECTIONS.PATTERNS}
-            element={
-              <ProductCarouselPage products={productData as Product[]} />
-            }
+            element={<ProductGallery />}
           />
         </Routes>
       </EmbeddedCheckoutProvider>

@@ -1,4 +1,3 @@
-import Footer from "../../Footer";
 import FixedNavMenu from "../../navigation/FixedNavMenu";
 import TitleSection from "./TitleSection";
 
@@ -7,7 +6,6 @@ const Home = () => {
     <div className="relative">
       <FixedNavMenu />
       <TitleSection />
-      <Footer />
     </div>
   );
 };
