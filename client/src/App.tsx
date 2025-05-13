@@ -7,6 +7,8 @@ import { CheckoutForm } from "./components/pages/checkout/CheckoutForm";
 import Home from "./components/pages/home/Home";
 import ProductGallery from "./components/pages/products/ProductGalleryPage";
 import ProductPage from "./components/pages/products/ProductPage";
+import AboutUs from "./components/pages/aboutUs/AboutUs";
+import ContactUs from "./components/pages/contactUs/ContactUs";
 import { productData } from "./data/patterns";
 import { Product } from "./types/Product";
 
@@ -40,6 +42,8 @@ const App = () => {
             path={ROUTES.COLLECTIONS.PATTERNS}
             element={<ProductGallery />}
           />
+          <Route path={ROUTES.ABOUT_US} element={<AboutUs />} />
+          <Route path={ROUTES.CONTACT_US} element={<ContactUs />} />
         </Routes>
       </EmbeddedCheckoutProvider>
     </Router>
