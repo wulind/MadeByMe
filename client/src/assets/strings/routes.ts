@@ -7,4 +7,5 @@ export const ROUTES = {
     PATTERNS: "collections/patterns",
   },
   ABOUT_US: "about-us",
+  CONTACT_US: "contact-us",
 };

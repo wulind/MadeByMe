@@ -2,6 +2,12 @@
 
 MadeByStudios is an exploration into a creative storefront built with React and Stripe, designed to sell digital crochet patterns with a premium, animated user experience.
 
+## Client requirements 
+
+In the `client` directory, create a `.env` file and add your Web3Form access key and Stripe publishable key. These are required before running the app.
+
+## Client available scripts
+
 ![Home page - Animated gif demo](demo/HomeScreen.gif)
 
 
@@ -66,6 +72,8 @@ Windows:
 
 ### 2. Install requirements
 `pip install -r requirements.txt`
+
+In the `server` directory, create a `.env` file and add the Stripe secret key. This is required before running the server.
 
 ### 3. Start server
 It's recommended to have 2 terminals open, one running the client and one running the server.

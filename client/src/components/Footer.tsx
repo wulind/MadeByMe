@@ -95,13 +95,13 @@ export default function Footer() {
             gap: 1,
           }}
         >
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="/about-us">
             About us
           </Link>
           <Link color="text.secondary" variant="body2" href="#">
             FAQs
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="/contact-us">
             Contact us
           </Link>
         </Box>
