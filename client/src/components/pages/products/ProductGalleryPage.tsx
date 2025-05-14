@@ -20,41 +20,44 @@ const pexel = (id: number) =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`;
 const images = [
   // Front
-  { position: [0, 0, 1.5], rotation: [0, 0, 0], url: pexel(1103970) },
+  { position: [0, 0, 1.5], rotation: [0, 0, 0], url: "" },
   // Back
-  { position: [-0.8, 0, -0.6], rotation: [0, 0, 0], url: pexel(416430) },
-  { position: [0.8, 0, -0.6], rotation: [0, 0, 0], url: pexel(310452) },
+  { position: [-0.8, 0, -0.6], rotation: [0, 0, 0], url: "" },
+  { position: [0.8, 0, -0.6], rotation: [0, 0, 0], url: "" },
   // Left
   {
     position: [-1.75, 0, 0.25],
     rotation: [0, Math.PI / 2.5, 0],
-    url: pexel(327482),
+    url: "/images/IMG_5299.jpeg",
+    title: "Dumplings",
   },
   {
     position: [-2.15, 0, 1.5],
     rotation: [0, Math.PI / 2.5, 0],
-    url: pexel(325185),
+    url: "",
   },
   {
     position: [-2, 0, 2.75],
     rotation: [0, Math.PI / 2.5, 0],
-    url: pexel(358574),
+    url: "/images/IMG_5771.jpeg",
+    title: "Beanie 1",
   },
   // Right
   {
     position: [1.75, 0, 0.25],
     rotation: [0, -Math.PI / 2.5, 0],
-    url: pexel(227675),
+    url: "/images/IMG_4828.jpeg",
+    title: "Tote bag",
   },
   {
     position: [2.15, 0, 1.5],
     rotation: [0, -Math.PI / 2.5, 0],
-    url: pexel(911738),
+    url: "",
   },
   {
     position: [2, 0, 2.75],
     rotation: [0, -Math.PI / 2.5, 0],
-    url: pexel(1738986),
+    url: "",
   },
 ];
 
@@ -103,11 +106,14 @@ function Frames({
   const navigate = useNavigate();
 
   useEffect(() => {
-    clicked.current = ref.current.getObjectByName(params?.id);
-    if (clicked.current && clicked.current.parent) {
-      clicked.current.parent.updateWorldMatrix(true, true);
-      clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 1.25));
-      clicked.current.parent.getWorldQuaternion(q);
+    console.log(params, params?.id);
+    if (params && params.id && ref.current) {
+      clicked.current = ref.current.getObjectByName(params.id);
+      if (clicked.current && clicked.current.parent) {
+        clicked.current.parent.updateWorldMatrix(true, true);
+        clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 1.25));
+        clicked.current.parent.getWorldQuaternion(q);
+      }
     } else {
       p.set(0, 0, 5.5);
       q.identity();
@@ -126,7 +132,7 @@ function Frames({
         e.stopPropagation(),
         navigate(clicked.current === e.object ? "/" : "/item/" + e.object.name)
       )}
-      onPointerMissed={() => navigate("/")}
+      onPointerMissed={() => navigate("/collections/patterns")}
     >
       {images.map((props: any) => (
         <Frame key={props.url} {...props} />
@@ -137,10 +143,12 @@ function Frames({
 
 function Frame({
   url,
+  title,
   c = new THREE.Color(),
   ...props
 }: {
   url: string;
+  title: string;
   c: THREE.Color;
 }) {
   const image = useRef(null);
@@ -151,23 +159,31 @@ function Frame({
   const [rnd] = useState(() => Math.random());
   const name = getUuid(url);
   const isActive = params?.id === name;
+
+  const frameInitialY = useRef<number>(0);
+
   useCursor(hovered);
+
   useFrame((state, dt) => {
+    if (frameInitialY.current === 0 && frame.current) {
+      frameInitialY.current = frame.current.position.y;
+    }
+
+    if (!frameInitialY.current) return;
+
     image.current.material.zoom =
       2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 2;
+
+    const targetY = hovered
+      ? frameInitialY.current + 0.1
+      : frameInitialY.current;
     easing.damp3(
-      image.current.scale,
-      [
-        0.85 * (!isActive && hovered ? 0.85 : 1),
-        0.9 * (!isActive && hovered ? 0.905 : 1),
-        1,
-      ],
-      0.1,
-      dt,
-    );
-    easing.dampC(
-      frame.current.material.color,
-      hovered ? "orange" : "white",
+      frame.current.position,
+      new THREE.Vector3(
+        frame.current.position.x,
+        targetY, // Lift up slightly on hover
+        frame.current.position.z,
+      ),
       0.1,
       dt,
     );
@@ -175,6 +191,7 @@ function Frame({
   return (
     <group {...props}>
       <mesh
+        ref={frame}
         name={name}
         onPointerOver={(e) => (e.stopPropagation(), hover(true))}
         onPointerOut={() => hover(false)}
@@ -189,7 +206,6 @@ function Frame({
           envMapIntensity={2}
         />
         <mesh
-          ref={frame}
           raycast={() => null}
           scale={[0.9, 0.93, 0.9]}
           position={[0, 0, 0.2]}
@@ -201,7 +217,8 @@ function Frame({
           raycast={() => null}
           ref={image}
           position={[0, 0, 0.7]}
-          url={url}
+          scale={[0.85, 0.9]}
+          url={url == "" ? "/images/coming_soon.png" : url}
         />
       </mesh>
       <Text
@@ -211,7 +228,7 @@ function Frame({
         position={[0.55, GOLDENRATIO, 0]}
         fontSize={0.025}
       >
-        {name.split("-").join(" ")}
+        {title ? title : "Coming Soon"}
       </Text>
     </group>
   );
