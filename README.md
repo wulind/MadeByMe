@@ -6,10 +6,9 @@ MadeByStudios is an exploration into a creative storefront built with React and 
 
 In the `client` directory, create a `.env` file and add your Web3Form access key and Stripe publishable key. These are required before running the app.
 
-## Client available scripts
-
 ![Home page - Animated gif demo](demo/HomeScreen.gif)
 
+## Client
 
 ## Technologies used:
 Frontend: TypeScript, [React](https://react.dev/), [Framer Motion](https://motion.dev/), [Tailwind CSS](https://tailwindcss.com/), [ThreeJS](https://threejs.org/), [React Three Fiber](https://r3f.docs.pmnd.rs/), [Lenis smooth scroll
@@ -53,7 +52,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Run server
+## Server
 
 To start the server, begin by creating a virutal environment
 
