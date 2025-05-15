@@ -2,18 +2,16 @@
 
 MadeByStudios is an exploration into a creative storefront built with React and Stripe, designed to sell digital crochet patterns with a premium, animated user experience.
 
-## Client requirements 
-
-In the `client` directory, create a `.env` file and add your Web3Form access key and Stripe publishable key. These are required before running the app.
-
 ![Home page - Animated gif demo](demo/HomeScreen.gif)
-
-## Client
 
 ## Technologies used:
 Frontend: TypeScript, [React](https://react.dev/), [Framer Motion](https://motion.dev/), [Tailwind CSS](https://tailwindcss.com/), [ThreeJS](https://threejs.org/), [React Three Fiber](https://r3f.docs.pmnd.rs/), [Lenis smooth scroll
 ](https://github.com/darkroomengineering/lenis)\
 Backend: Python ([FastAPI](https://fastapi.tiangolo.com/)), [Stripe](https://docs.stripe.com/sdks/stripejs-react)
+
+## Client requirements 
+
+In the `client` directory, create a `.env` file and add your Web3Form access key and Stripe publishable key. These are required before running the app.
 
 ## Run client
 Assumes local instal of [Node.js](https://nodejs.org/en)
