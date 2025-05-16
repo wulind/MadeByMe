@@ -2,7 +2,7 @@
 
 MadeByStudios is an exploration into a creative showcase built with React and ThreeJS, designed to showcase fiber arts created by my friends and I with a premium, animated user experience. In addition, we incoporated Stripe so we may sell our crochet patterns.
 
-The home screen features images of recent project with a distortion effect applied, creating an ever-evolving wave pattern that will continue to match our recent projects.
+The home screen features images of our recently completed crochet projects with a distortion effect applied, creating an ever-evolving home screen.
 
 ![Home page - Animated gif demo](demo/HomeScreen.gif)
 
