@@ -3,12 +3,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import { ROUTES } from "./assets/strings/routes";
+import AboutUs from "./components/pages/aboutUs/AboutUs";
 import { CheckoutForm } from "./components/pages/checkout/CheckoutForm";
+import ContactUs from "./components/pages/contactUs/ContactUs";
 import Home from "./components/pages/home/Home";
 import ProductGallery from "./components/pages/products/ProductGalleryPage";
 import ProductPage from "./components/pages/products/ProductPage";
-import AboutUs from "./components/pages/aboutUs/AboutUs";
-import ContactUs from "./components/pages/contactUs/ContactUs";
 import { productData } from "./data/patterns";
 import { Product } from "./types/Product";
 
@@ -39,7 +39,7 @@ const App = () => {
           />
           <Route path={ROUTES.CHECKOUT} element={<CheckoutForm />} />
           <Route
-            path={ROUTES.COLLECTIONS.PATTERNS}
+            path={`${ROUTES.COLLECTIONS.PATTERNS}/:productId?`}
             element={<ProductGallery />}
           />
           <Route path={ROUTES.ABOUT_US} element={<AboutUs />} />

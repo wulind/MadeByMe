@@ -5,7 +5,15 @@ import { ImagePlane } from "../../common/ImagePlane";
 import { Effect } from "./Effect";
 
 export const TCanvas = () => {
-  const imageSrc = ["unraveland.webp", "unraveland2.webp", "unraveland3.webp"];
+  const imageSrc = [
+    "IMG_4828.jpeg",
+    "IMG_8518.jpeg",
+    "IMG_8641.jpeg",
+    "IMG_5543.jpeg",
+    "IMG_5299.jpeg",
+    "IMG_4688.jpeg",
+  ];
+
   return (
     <Canvas
       camera={{
@@ -17,7 +25,7 @@ export const TCanvas = () => {
       }}
       dpr={window.devicePixelRatio}
     >
-      <color attach="background" args={["#000"]} />
+      <color attach="background" args={["#252525"]} />
       <Suspense fallback={null}>
         <ImagePlane images={imageSrc} />
       </Suspense>

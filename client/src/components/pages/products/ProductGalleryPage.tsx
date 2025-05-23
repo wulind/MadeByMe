@@ -8,7 +8,7 @@ import {
 import { Canvas, useFrame } from "@react-three/fiber";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
-import { useMatch, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as THREE from "three";
 import getUuid from "uuid-by-string";
 
@@ -16,8 +16,6 @@ import Header from "../../navigation/Header";
 
 const GOLDENRATIO = 1.61803398875;
 
-const pexel = (id: number) =>
-  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`;
 const images = [
   // Front
   { position: [0, 0, 1.5], rotation: [0, 0, 0], url: "" },
@@ -101,14 +99,13 @@ function Frames({
 }) {
   const ref = useRef<THREE.Object3D>(null);
   const clicked = useRef<THREE.Object3D>(null);
-  const match = useMatch("/item/:id");
-  const params = match?.params;
+  const [selectedItem, setSelectedItem] = useState("");
+  const { productId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(params, params?.id);
-    if (params && params.id && ref.current) {
-      clicked.current = ref.current.getObjectByName(params.id);
+    if (productId && ref.current) {
+      clicked.current = ref.current.getObjectByName(productId) ?? null;
       if (clicked.current && clicked.current.parent) {
         clicked.current.parent.updateWorldMatrix(true, true);
         clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 1.25));
@@ -130,12 +127,16 @@ function Frames({
       ref={ref}
       onClick={(e) => (
         e.stopPropagation(),
-        navigate(clicked.current === e.object ? "/" : "/item/" + e.object.name)
+        navigate(
+          clicked.current === e.object
+            ? "/"
+            : "/collections/patterns/" + e.object.name,
+        )
       )}
       onPointerMissed={() => navigate("/collections/patterns")}
     >
-      {images.map((props: any) => (
-        <Frame key={props.url} {...props} />
+      {images.map((props: any, i) => (
+        <Frame key={i} {...props} />
       ))}
     </group>
   );
@@ -151,14 +152,11 @@ function Frame({
   title: string;
   c: THREE.Color;
 }) {
-  const image = useRef(null);
-  const frame = useRef(null);
-  const match = useMatch("/item/:id");
-  const params = match?.params;
+  const image = useRef<THREE.Mesh>(null);
+  const frame = useRef<THREE.Mesh>(null);
   const [hovered, hover] = useState(false);
   const [rnd] = useState(() => Math.random());
   const name = getUuid(url);
-  const isActive = params?.id === name;
 
   const frameInitialY = useRef<number>(0);
 
@@ -169,24 +167,26 @@ function Frame({
       frameInitialY.current = frame.current.position.y;
     }
 
-    if (!frameInitialY.current) return;
+    if (image.current) {
+      (image.current.material as any).zoom =
+        2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 2;
+    }
 
-    image.current.material.zoom =
-      2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 2;
-
-    const targetY = hovered
-      ? frameInitialY.current + 0.1
-      : frameInitialY.current;
-    easing.damp3(
-      frame.current.position,
-      new THREE.Vector3(
-        frame.current.position.x,
-        targetY, // Lift up slightly on hover
-        frame.current.position.z,
-      ),
-      0.1,
-      dt,
-    );
+    if (frame.current && frameInitialY.current) {
+      const targetY = hovered
+        ? frameInitialY.current + 0.1
+        : frameInitialY.current;
+      easing.damp3(
+        frame.current.position,
+        new THREE.Vector3(
+          frame.current.position.x,
+          targetY, // Lift up slightly on hover
+          frame.current.position.z,
+        ),
+        0.1,
+        dt,
+      );
+    }
   });
   return (
     <group {...props}>
