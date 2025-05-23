@@ -1,20 +1,19 @@
 # Getting Started
 
-MadeByStudios is an exploration into a creative storefront built with React and Stripe, designed to sell digital crochet patterns with a premium, animated user experience.
+MadeByStudios is an exploration into a creative showcase built with React and ThreeJS, designed to showcase fiber arts created by my friends and I with a premium, animated user experience. In addition, we incoporated Stripe so we may sell our crochet patterns.
 
-## Client requirements 
-
-In the `client` directory, create a `.env` file and add your Web3Form access key and Stripe publishable key. These are required before running the app.
-
-## Client available scripts
+The home screen features images of our recently completed crochet projects with a distortion effect applied, creating an ever-evolving home screen.
 
 ![Home page - Animated gif demo](demo/HomeScreen.gif)
-
 
 ## Technologies used:
 Frontend: TypeScript, [React](https://react.dev/), [Framer Motion](https://motion.dev/), [Tailwind CSS](https://tailwindcss.com/), [ThreeJS](https://threejs.org/), [React Three Fiber](https://r3f.docs.pmnd.rs/), [Lenis smooth scroll
 ](https://github.com/darkroomengineering/lenis)\
 Backend: Python ([FastAPI](https://fastapi.tiangolo.com/)), [Stripe](https://docs.stripe.com/sdks/stripejs-react)
+
+## Client requirements 
+
+In the `client` directory, create a `.env` file and add your Web3Form access key and Stripe publishable key. These are required before running the app.
 
 ## Run client
 Assumes local instal of [Node.js](https://nodejs.org/en)
@@ -53,7 +52,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Run server
+## Server
 
 To start the server, begin by creating a virutal environment
 
